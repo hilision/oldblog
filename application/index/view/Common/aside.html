@@ -1,0 +1,32 @@
+<aside class="col-md-4 sidebar">
+    <!-- start widget -->
+    <!-- end widget -->	
+
+    <!-- start tag cloud widget -->
+    <div class="widget">
+        <h4 class="title">热门文章</h4>
+        <div class="content community">
+            {volist name="pArticles" id="list"}
+            <p>&bull;&nbsp;<a href="{:url('Article/getArticle',['id'=>$list.id])}" title="{$list.title}">{$list.title}</a></p>
+            {/volist}
+        </div>
+    </div>
+    <!-- end tag cloud widget -->	
+
+    <!-- start tag cloud widget -->
+    <div class="widget">
+        <h4 class="title">标签</h4>
+        <div class="content tag-cloud">
+            {volist name='cateList' id='cate'}
+            <a href="{:url('cate/index',['cateID'=>$cate.id])}">{$cate.catename}</a>                       
+            {/volist}
+        </div>
+    </div>
+    <!-- end tag cloud widget -->		
+
+    <!-- start widget -->
+    <!-- end widget -->	
+
+    <!-- start widget -->
+    <!-- end widget -->         
+</aside>

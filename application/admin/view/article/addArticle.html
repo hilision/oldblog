@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Hilision's Blog Managemnet System</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <style class="anchorjs"></style><link href="{:url('/')}static/admin/css/index/bootstrap.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!-- Documentation extras -->
+
+    <link href="{:url('/')}static/admin/css/index/docsearch.css" rel="stylesheet">
+
+    <link href="{:url('/')}static/admin/css/index/docs.css" rel="stylesheet">
+</head>
+<body>
+    <!-- start header -->
+    {include file="Common/header"}
+    <!-- end header -->
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+                <div class="col-12 col-md-3 col-xl-2 bd-sidebar">   
+                    <!-- start navbar    -->
+                    {include file="Common/navbar"}
+                    <!-- end navbar -->
+                </div>
+                <!-- start content -->
+                <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+                    <form action="addArticle" method = "POST" enctype="multipart/form-data">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">标题：</span>
+                            </div>
+                            <input type="text" class="form-control" name="title">                   
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">作者：</span>
+                            </div>
+                            <input type="text" class="form-control" name="author">                   
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">描述：</span>
+                            </div>
+                            <input type="text" class="form-control" name="desc">                   
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">分类：</span>
+                            </div>
+                            <select class="custom-select" name="cateid">
+                                <option selected>Choose...</option>
+                                {volist name='cate' id='cate'}
+                                <option value="{$cate.id}">{$cate.catename}</option>
+                                {/volist}
+                            </select>                  
+                        </div>
+                        <div class="input-group mb-3">
+                            <textarea name="content" id="" cols="300" rows="10"></textarea>
+                        </div>
+                        
+                        <input type="submit" class="btn btn-success" value="提交">
+                    </form>                        
+                </main>
+                <!-- end content -->
+        </div>
+    </div>
+
+<script src="{:url('/')}static/admin/js/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="{:url('/')}static/admin/js/popper.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="{:url('/')}static/admin/js/bootstrap.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="{:url('/')}static/admin/js/docsearch.js"></script><script src="{:url('/')}static/admin/js/docs.js"></script>
+<script>
+</script>
+</body>
+</html>

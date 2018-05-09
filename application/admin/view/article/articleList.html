@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Hilision's Blog Managemnet System</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <style class="anchorjs"></style><link href="{:url('/')}static/admin/css/index/bootstrap.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!-- Documentation extras -->
+
+    <link href="{:url('/')}static/admin/css/index/docsearch.css" rel="stylesheet">
+
+    <link href="{:url('/')}static/admin/css/index/docs.css" rel="stylesheet">
+</head>
+<body>
+    <!-- start header -->
+    {include file="Common/header"}
+    <!-- end header -->
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+                <div class="col-12 col-md-3 col-xl-2 bd-sidebar">   
+                    <!-- start navbar    -->
+                    {include file="Common/navbar"}
+                    <!-- end navbar -->
+                </div>
+                <!-- start content -->
+                <main role="main" style="margin-top: 15px;">
+                    <table class="table" style="width: 100%;border: none">
+                        <thead class="thead-dark">
+                                <tr>
+                                        <th>标题</th>
+                                        <th>作者</th>
+                                        <th>描述</th>
+                                        <th>分类</th>
+                                        <th>操作</th>
+                                    </tr>
+                        </thead>
+                        <tbody>
+                            {volist name='articleList' id='list'}
+                            <tr>
+                                <td>{$list.title}</td>
+                                <td>{$list.author}</td>
+                                <td>{$list.desc}</td>
+                                <td>{$list.cate.catename}</td>
+                                <td>
+                                    <span><a href="{:url('Article/edit',['id'=>$list.id])}">修改</a></span>
+                                </td>
+                            </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </main>
+                <!-- end content -->
+        </div>
+    </div>
+
+<script src="{:url('/')}static/admin/js/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="{:url('/')}static/admin/js/popper.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="{:url('/')}static/admin/js/bootstrap.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="{:url('/')}static/admin/js/docsearch.js"></script><script src="{:url('/')}static/admin/js/docs.js"></script>
+</body>
+</html>

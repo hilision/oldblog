@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>HILISION's Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{:url('/')}static/common/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="{:url('/')}static/index/style/monokai_sublime.css">
+    <link href="{:url('/')}static/index/style/magnific-popup.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{:url('/')}static/index/style/screen.css">
+    <meta name="referrer" content="origin">
+</head>
+<body class="home-template">
+    <!-- start header&navigation -->  
+    {include file='/Common/header'/}    
+    <!-- end header&navigation -->
+    <!-- start site's main content area -->
+    <section class="content-wrap">
+            
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content">   
+                    {volist name="list" id="vo"}                 
+                    <article id="{$vo.id}" class="post">
+                        <div class="post-head">
+                            <h3 class="post-title"><a href="{:url('article/getArticle',['id'=>$vo.id])}">{$vo.title}</a></h3>
+                            <div class="post-meta">
+                                <span class="author">作者：<a href="{:url('Author/index')}">{$vo.author}</a></span> •
+                                <time class="post-date" datetime="{$vo.create_time|date='Y年m月d日 H时:i分:s秒'}" title="{$vo.create_time|date='Y年m月d日 H时:i分:s秒'}">{$vo.create_time|date='Y-m-d'}</time>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>{$vo.desc}</p>
+                        </div>
+                        <div class="post-permalink">
+                            <a href="{:url('article/getArticle',['id'=>$vo.id])}" class="btn btn-default">阅读全文</a>
+                        </div>
+                        <footer class="post-footer clearfix">
+                            <div class="pull-left tag-list">
+                                <i class="fa fa-folder-open-o">
+                                    {if condition="empty($vo['cate']['catename']) neq  true"}
+                                            <a href="{:url('Cate/index',['cateID'=>$vo.cate.id])}">{$vo.cate.catename}</a>
+                                    {/if}
+                                </i>            
+                            </div>
+                            <div class="pull-right share">
+                            </div>
+                        </footer>
+                    </article>                    
+                    {/volist}
+                    <nav class="pagination" role="navigation">
+                        {if condition="$currentPage neq 1"}
+                        <a class="older-posts" href="{:url('index',['page'=>$currentPage-1])}"><i class="fa fa-angle-left"></i></a>                            
+                        {/if}
+                        <span class="page-number">第 {$currentPage} 页 ⁄ 共 {$totalPage} 页</span>
+                        {if condition="$currentPage lt $totalPage"}
+                        <a class="older-posts" href="{:url('index',['page'=>$currentPage+1])}"><i class="fa fa-angle-right"></i></a>                          
+                        {/if}
+                    </nav>
+                    
+                </main>
+                <!-- start aside -->
+                {include file='Common/aside'}
+                <!-- end aside -->
+            </div>
+        </div>
+        
+    </section>
+    <!-- start footer -->
+    {include file='Common/footer'}
+    <!-- end footer -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{:url('/')}static/index/js/jquery_003.js"></script>
+    <script src="{:url('/')}static/index/js/highlight.js"></script>
+    <script src="{:url('/')}static/index/js/jquery_002.js"></script>
+    <script src="{:url('/')}static/index/js/main.js"></script>
+ 
+</script>
+</body>
+</html>
